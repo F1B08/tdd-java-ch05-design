@@ -146,11 +146,16 @@ public class Connect4 {
     }
 
     public boolean isFinished() {
+        if (winner != null) return true;
         int numOfDiscs = 0;
         for (int col = 0; col < COLUMNS; ++col) {
             numOfDiscs += getNumberOfDiscsInColumn(col);
         }
-        return numOfDiscs >= COLUMNS * ROWS || winner != null;
+        if (numOfDiscs >= COLUMNS * ROWS) {
+            System.out.println("It's a draw");
+            return true;
+        }
+        return false;
     }
 
     public static void main(String[] args) {
