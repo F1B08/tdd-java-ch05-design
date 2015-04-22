@@ -71,9 +71,7 @@ public class Connect4 {
                 board[column - 1][numOfDiscs] = currentPlayer;
                 printBoard();
                 checkWinCondition(column - 1, numOfDiscs);
-                if (!isFinished()) {
-                    switchPlayer();
-                }
+                switchPlayer();
             } else {
                 System.out.println(numOfDiscs);
                 System.out.println("There's no room for another disc in this column");
@@ -135,7 +133,8 @@ public class Connect4 {
         }
 
         startOffset = Math.min(col, ROWS - 1 - row);
-        column = col - startOffset; auxRow = row + startOffset;
+        column = col - startOffset;
+        auxRow = row + startOffset;
         stringJoiner = new StringJoiner("");
         do {
             stringJoiner.add(board[column++][auxRow--].toString());
