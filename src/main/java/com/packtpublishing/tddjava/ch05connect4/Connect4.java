@@ -74,7 +74,7 @@ public class Connect4 {
                 switchPlayer();
             } else {
                 System.out.println(numOfDiscs);
-                System.out.println("There's no room for another disc in this column");
+                System.out.println("There's no room for a new disc in this column");
                 printBoard();
             }
         } else {
