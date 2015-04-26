@@ -144,10 +144,10 @@ public class Connect4TDDTest {
     @Test
     public void when4VerticalDiscsAreConnectedThenThatPlayerWins() {
         for (int row = 0; row < 3; row++) {
-            tested.putDiscInColumn(1);
-            tested.putDiscInColumn(2);
+            tested.putDiscInColumn(1); // R
+            tested.putDiscInColumn(2); // G
         }
-        tested.putDiscInColumn(1);
+        tested.putDiscInColumn(1); // R
         assertThat(tested.getWinner(), is("R"));
     }
 
@@ -160,10 +160,10 @@ public class Connect4TDDTest {
     public void when4HorizontalDiscsAreConnectedThenThatPlayerWins() {
         int column;
         for (column = 0; column < 3; column++) {
-            tested.putDiscInColumn(column);
-            tested.putDiscInColumn(column);
+            tested.putDiscInColumn(column); // R
+            tested.putDiscInColumn(column); // G
         }
-        tested.putDiscInColumn(column);
+        tested.putDiscInColumn(column); // R
         assertThat(tested.getWinner(), is("R"));
     }
 
