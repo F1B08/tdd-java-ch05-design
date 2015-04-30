@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
-public class Connect4TDDTest {
+public class Connect4TDDSpec {
 
     @Rule
     public ExpectedException exception = ExpectedException.none();
