@@ -8,9 +8,11 @@ import org.junit.rules.ExpectedException;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.List;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.isEmptyString;
 import static org.junit.Assert.*;
 
 public class Connect4TDDSpec {
@@ -147,6 +149,7 @@ public class Connect4TDDSpec {
             tested.putDiscInColumn(1); // R
             tested.putDiscInColumn(2); // G
         }
+        assertThat(tested.getWinner(), isEmptyString());
         tested.putDiscInColumn(1); // R
         assertThat(tested.getWinner(), is("R"));
     }
@@ -163,6 +166,7 @@ public class Connect4TDDSpec {
             tested.putDiscInColumn(column); // R
             tested.putDiscInColumn(column); // G
         }
+        assertThat(tested.getWinner(), isEmptyString());
         tested.putDiscInColumn(column); // R
         assertThat(tested.getWinner(), is("R"));
     }
@@ -174,34 +178,19 @@ public class Connect4TDDSpec {
 
     @Test
     public void when4Diagonal1DiscsAreConnectedThenThatPlayerWins() {
-        tested.putDiscInColumn(1); // R
-        tested.putDiscInColumn(2); // G
-        tested.putDiscInColumn(2); // R
-        tested.putDiscInColumn(3); // G
-        tested.putDiscInColumn(4); // R
-        tested.putDiscInColumn(3); // G
-        tested.putDiscInColumn(3); // R
-        tested.putDiscInColumn(4); // G
-        tested.putDiscInColumn(4); // R
-        tested.putDiscInColumn(5); // G
-        tested.putDiscInColumn(4); // R
-
+        int[] gameplay = new int[] {1, 2, 2, 3, 4, 3, 3, 4, 4, 5, 4};
+        for (int column : gameplay) {
+            tested.putDiscInColumn(column);
+        }
         assertThat(tested.getWinner(), is("R"));
     }
 
     @Test
     public void when4Diagonal2DiscsAreConnectedThenThatPlayerWins() {
-        tested.putDiscInColumn(3); // R
-        tested.putDiscInColumn(4); // G
-        tested.putDiscInColumn(2); // R
-        tested.putDiscInColumn(3); // G
-        tested.putDiscInColumn(2); // R
-        tested.putDiscInColumn(2); // G
-        tested.putDiscInColumn(1); // R
-        tested.putDiscInColumn(1); // G
-        tested.putDiscInColumn(1); // R
-        tested.putDiscInColumn(1); // G
-
+        int[] gameplay = new int[] {3, 4, 2, 3, 2, 2, 1, 1, 1, 1};
+        for (int column : gameplay) {
+            tested.putDiscInColumn(column);
+        }
         assertThat(tested.getWinner(), is("G"));
     }
 }

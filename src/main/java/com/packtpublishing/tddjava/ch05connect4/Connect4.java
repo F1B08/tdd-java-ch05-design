@@ -6,7 +6,7 @@ import java.util.StringJoiner;
 import java.util.regex.Pattern;
 
 /**
- * Code-first implementation
+ * Test-last implementation
  */
 public class Connect4 {
 
@@ -46,7 +46,7 @@ public class Connect4 {
     }
 
     private void switchPlayer() {
-        if (Color.RED.equals(currentPlayer)) {
+        if (Color.RED == currentPlayer) {
             currentPlayer = Color.GREEN;
         } else {
             currentPlayer = Color.RED;
@@ -87,7 +87,7 @@ public class Connect4 {
         if (column >= 0 && column < COLUMNS) {
             int row;
             for (row = 0; row < ROWS; row++) {
-                if (Color.EMPTY.equals(board[column][row])) return row;
+                if (Color.EMPTY == board[column][row]) return row;
             }
             return row;
         }
